@@ -72,17 +72,18 @@ fn main() {
         }
     }
 
-    print_spiral(matrix);
+    print_spiral(matrix, integer);
 }
 
-fn print_spiral(matrix: Vec<Vec<i32>>) {
+fn print_spiral(matrix: Vec<Vec<i32>>, integer: i32) {
+    let cell_size = format!("{}", integer * integer).len();
     for row in matrix {
         for cell in &row {
-            print!("|{}", format!("{:width$}", cell, width = 4));
+            print!("|{}", format!("{:width$}", cell, width = cell_size));
         }
         print!("|\n");
-        for _ in 0..row.len() {
-            print!("-----");
+        for _ in 0..row.len() * (cell_size + 1) {
+            print!("-");
         }
         print!("-\n");
     }
